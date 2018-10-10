@@ -3,9 +3,10 @@ using UnityEngine;
 using UnityEditor;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
-
+using Substance.Game;
 
 public class T4MSC : EditorWindow {
 	
@@ -225,8 +226,8 @@ public class T4MSC : EditorWindow {
 	GameObject UnityTerrain;
 	GameObject AddObject;
 	Transform PlayerCam;
-	ProceduralMaterial PreceduralAdd;
-	ProceduralMaterial Precedural;
+    SubstanceGraph PreceduralAdd;
+    SubstanceGraph Precedural;
 	
 	Shader LOD1S;
 	Shader LOD2S;
@@ -2397,9 +2398,9 @@ public class T4MSC : EditorWindow {
 								PreceduralAdd = Precedural;
 					
 								if (PreceduralAdd){
-								CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat0", PreceduralAdd.GetTexture ("_MainTex"));
+								CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat0", PreceduralAdd.GetInputTexture("_MainTex"));
 								if (CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.HasProperty("_BumpSplat0"))
-									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_BumpSplat0", PreceduralAdd.GetTexture ("_BumpMap"));
+									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_BumpSplat0", PreceduralAdd.GetInputTexture ("_BumpMap"));
 								}else if (MaterialAdd){
 									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat0", MaterialAdd);
 								}
@@ -2412,9 +2413,9 @@ public class T4MSC : EditorWindow {
 							if (!PreceduralAdd && !MaterialAdd && Precedural)
 								PreceduralAdd = Precedural;
 							if (PreceduralAdd){
-							CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat1", PreceduralAdd.GetTexture ("_MainTex"));
+							CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat1", PreceduralAdd.GetInputTexture ("_MainTex"));
 							if (CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.HasProperty("_BumpSplat1"))
-								CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_BumpSplat1", PreceduralAdd.GetTexture ("_BumpMap"));
+								CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_BumpSplat1", PreceduralAdd.GetInputTexture ("_BumpMap"));
 							}else if (MaterialAdd){
 									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat1", MaterialAdd);
 								}
@@ -2428,9 +2429,9 @@ public class T4MSC : EditorWindow {
 								if (!PreceduralAdd && !MaterialAdd && Precedural)
 								PreceduralAdd = Precedural;
 								if (PreceduralAdd){
-									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat2", PreceduralAdd.GetTexture ("_MainTex"));
+									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat2", PreceduralAdd.GetInputTexture ("_MainTex"));
 									if (CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.HasProperty("_BumpSplat2"))
-										CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_BumpSplat2", PreceduralAdd.GetTexture ("_BumpMap"));
+										CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_BumpSplat2", PreceduralAdd.GetInputTexture ("_BumpMap"));
 								}else if (MaterialAdd){
 									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat2", MaterialAdd);
 								}
@@ -2444,9 +2445,9 @@ public class T4MSC : EditorWindow {
 								if (!PreceduralAdd && !MaterialAdd && Precedural)
 								PreceduralAdd = Precedural;
 								if (PreceduralAdd){
-									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat3", PreceduralAdd.GetTexture ("_MainTex"));
+									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat3", PreceduralAdd.GetInputTexture ("_MainTex"));
 									if (CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.HasProperty("_BumpSplat3"))
-										CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_BumpSplat3", PreceduralAdd.GetTexture ("_BumpMap"));
+										CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_BumpSplat3", PreceduralAdd.GetInputTexture ("_BumpMap"));
 								}else if (MaterialAdd){
 									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat3", MaterialAdd);
 								}
@@ -2461,7 +2462,7 @@ public class T4MSC : EditorWindow {
 								PreceduralAdd = Precedural;
 					
 								if (PreceduralAdd){
-									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat4", PreceduralAdd.GetTexture ("_MainTex"));
+									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat4", PreceduralAdd.GetInputTexture ("_MainTex"));
 								}else if (MaterialAdd){
 									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat4", MaterialAdd);
 								}
@@ -2476,7 +2477,7 @@ public class T4MSC : EditorWindow {
 								PreceduralAdd = Precedural;
 					
 								if (PreceduralAdd){
-									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat5", PreceduralAdd.GetTexture ("_MainTex"));
+									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat5", PreceduralAdd.GetInputTexture ("_MainTex"));
 							}else if (MaterialAdd){
 									CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.SetTexture("_Splat5", MaterialAdd);
 							}
@@ -2490,15 +2491,14 @@ public class T4MSC : EditorWindow {
 				
 				
 				string AssetName= AssetDatabase.GetAssetPath(CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.GetTexture("_Splat"+selProcedural)) as string;
-				
-				
-				SubstanceImporter SubstanceI= AssetImporter.GetAtPath (AssetName) as SubstanceImporter;
-				
-				if (SubstanceI){
+
+				Substance.Game.Substance substance = AssetDatabase.LoadAssetAtPath(AssetName, typeof(Substance.Game.Substance)) as Substance.Game.Substance;
+				if (substance)
+                {
 					
-				 	ProceduralMaterial[] ProcMat = SubstanceI.GetMaterials() as  ProceduralMaterial[];
+				 	List<SubstanceGraph> ProcMat = substance.graphs as List<SubstanceGraph>;
 					
-					for (int i = 0; i<ProcMat.Length;i++){
+					for (int i = 0; i<ProcMat.Count;i++){
 						if (ProcMat[i].name+"_Diffuse" == CurrentSelect.gameObject.GetComponent <T4MObjSC>().T4MMaterial.GetTexture("_Splat"+selProcedural).name){
 							Precedural = ProcMat[i];
 							//SubstanceI.SetTextureAlphaSource(Precedural, Precedural.name+"_Diffuse", ProceduralOutputType.Diffuse);
@@ -2516,7 +2516,7 @@ public class T4MSC : EditorWindow {
 					if (MaterialTyp != MaterialType.Classic){
 						GUILayout.Label("Substances To Add : ");
 						MaterialAdd = null;
-						PreceduralAdd = EditorGUILayout.ObjectField(PreceduralAdd, typeof(ProceduralMaterial),true, GUILayout.Width(220)) as ProceduralMaterial;
+						PreceduralAdd = EditorGUILayout.ObjectField(PreceduralAdd, typeof(SubstanceGraph),true, GUILayout.Width(220)) as SubstanceGraph;
 					}
 					else{ 
 						GUILayout.Label("Texture To Add : ");
@@ -2693,95 +2693,125 @@ public class T4MSC : EditorWindow {
 	void Substance()
 	{
 		
-			var inputs = Precedural.GetProceduralPropertyDescriptions ();
+			var inputs = Precedural.GetInputProperties();
 			
 			for (int i   = 0; i < inputs.Length; i++) {
 				var input = inputs[i];
 				var type = input.type;
 								
-				if (type == ProceduralPropertyType.Boolean) {
-					var inputBool = Precedural.GetProceduralBoolean (input.name);
+				if (type == SubstanceGraph.InputPropertiesType.Boolean) {
+					var inputBool = Precedural.GetInputBool (input.name);
 					var oldInputBool = inputBool;
 					inputBool = EditorGUILayout.Toggle ( input.name,inputBool);
 					if (inputBool != oldInputBool)
-						Precedural.SetProceduralBoolean (input.name, inputBool);
+						Precedural.SetInputBool(input.name, inputBool);
 				}
 				
-				else if (type == ProceduralPropertyType.Float) {
-					if (input.hasRange) {
+				else if (type == SubstanceGraph.InputPropertiesType.Float) {
+					//if (input.hasRange) 未对应
+					{
 					
 						GUILayout.Label (input.name, EditorStyles.boldLabel);
 						
-						var inputFloat = Precedural.GetProceduralFloat (input.name);
+						var inputFloat = Precedural.GetInputFloat(input.name);
 						var oldInputFloat = inputFloat;
 						
-						inputFloat = EditorGUILayout.Slider (inputFloat, input.minimum, input.maximum);
+						inputFloat = EditorGUILayout.Slider (inputFloat, input.minimum[0], input.maximum[0]);
 						if (inputFloat != oldInputFloat)
-							Precedural.SetProceduralFloat (input.name, inputFloat);
+							Precedural.SetInputFloat(input.name, inputFloat);
 					}
 				}
 				
-				else if (type == ProceduralPropertyType.Vector2 ||
-					type == ProceduralPropertyType.Vector3 ||
-					type == ProceduralPropertyType.Vector4
+				else if (type == SubstanceGraph.InputPropertiesType.Vector2 ||
+					type == SubstanceGraph.InputPropertiesType.Vector3 ||
+					type == SubstanceGraph.InputPropertiesType.Vector4
 				) {
 					
-					if (input.hasRange) {
-						GUILayout.Label (input.name, EditorStyles.boldLabel);
-						
-						
-						var vectorComponentAmount = 4;
-						if (type == ProceduralPropertyType.Vector2) vectorComponentAmount = 2;
-						if (type == ProceduralPropertyType.Vector3) vectorComponentAmount = 3;
-						
-						var inputVector = Precedural.GetProceduralVector (input.name);
-						var oldInputVector = inputVector;
-						
-						
-						for (int c  = 0; c < vectorComponentAmount; c++)
-							inputVector[c] = EditorGUILayout.Slider (
-								inputVector[c], input.minimum, input.maximum);
-						
-						if (inputVector != oldInputVector)
-							Precedural.SetProceduralVector (input.name, inputVector);
-					}
-				}
-				
-				else if (type == ProceduralPropertyType.Color3 || type == ProceduralPropertyType.Color4) {
+					//if (input.hasRange)
+				    {
+				        GUILayout.Label(input.name, EditorStyles.boldLabel);
+
+				        switch (type)
+				        {
+
+				            case SubstanceGraph.InputPropertiesType.Vector2:
+				            {
+				                var inputVector = Precedural.GetInputVector2(input.name);
+				                var oldInputVector = inputVector;
+
+
+				                for (int c = 0; c < 2; c++)
+				                    inputVector[c] = EditorGUILayout.Slider(
+				                        inputVector[c], input.minimum[c], input.maximum[c]);
+
+				                if (inputVector != oldInputVector)
+				                    Precedural.SetInputVector2(input.name, inputVector);
+				            }
+				                break;
+				            case SubstanceGraph.InputPropertiesType.Vector3:
+				            {
+				                var inputVector = Precedural.GetInputVector3(input.name);
+				                var oldInputVector = inputVector;
+
+
+				                for (int c = 0; c < 2; c++)
+				                    inputVector[c] = EditorGUILayout.Slider(
+				                        inputVector[c], input.minimum[c], input.maximum[c]);
+
+				                if (inputVector != oldInputVector)
+				                    Precedural.SetInputVector3(input.name, inputVector);
+				            }
+				                break;
+				            case SubstanceGraph.InputPropertiesType.Vector4:
+				            {
+				                var inputVector = Precedural.GetInputVector4(input.name);
+				                var oldInputVector = inputVector;
+
+
+				                for (int c = 0; c < 2; c++)
+				                    inputVector[c] = EditorGUILayout.Slider(
+				                        inputVector[c], input.minimum[c], input.maximum[c]);
+
+				                if (inputVector != oldInputVector)
+				                    Precedural.SetInputVector4(input.name, inputVector);
+				            }
+				                break;
+				        }
+				    }
+            }
+
+            else if (type == SubstanceGraph.InputPropertiesType.Color) {
 					GUILayout.Label (input.name, EditorStyles.boldLabel);
 					
-					
-					
-					
-					var colorInput = Precedural.GetProceduralColor (input.name);
+					var colorInput = Precedural.GetInputColor(input.name, 0); // color3 转成 color4
 					var oldColorInput = colorInput;
 					
 					colorInput =EditorGUILayout.ColorField("Shader Color", colorInput);
 					
 					if (colorInput != oldColorInput)
-						Precedural.SetProceduralColor (input.name, colorInput);
+						Precedural.SetInputColor(input.name, colorInput);
 				}
 				
 				
-				else if (type == ProceduralPropertyType.Enum) {
+				else if (type == SubstanceGraph.InputPropertiesType.Enum) {
 					GUILayout.Label (input.name, EditorStyles.boldLabel);
 					
-					var enumInput = Precedural.GetProceduralEnum (input.name);
+					var enumInput = Precedural.GetInputInt(input.name);
 					var oldEnumInput = enumInput;
 					var enumOptions = input.enumOptions;
 					
 					enumInput = GUILayout.SelectionGrid (enumInput, enumOptions, 1);
 					if (enumInput != oldEnumInput)
-						Precedural.SetProceduralEnum (input.name, enumInput);
+						Precedural.SetInputInt(input.name, enumInput);
 				}
-			}
-			Precedural.RebuildTexturesImmediately();
+        }
+        Precedural.UpdateTexturePacking();
 
-		
-	
-	}
-	
-	void MyT4M()
+
+
+    }
+
+    void MyT4M()
 	{
 		if (CurrentSelect.GetComponent (typeof(T4MObjSC)))
 		{
@@ -3665,6 +3695,7 @@ public class T4MSC : EditorWindow {
 		TextureIm.anisoLevel = 9;
 		TextureIm.mipmapEnabled = false;
 		TextureIm.wrapMode = TextureWrapMode.Clamp;
+		TextureIm.textureCompression = TextureImporterCompression.Uncompressed;
 		AssetDatabase.ImportAsset (path, ImportAssetOptions.ForceUpdate);
 		Material Tmaterial;
 		Tmaterial = new Material (Shader.Find("T4MShaders/ShaderModel2/Diffuse/T4M 4 Textures"));
@@ -4162,5 +4193,5 @@ public class T4MSC : EditorWindow {
 		}		
 					
 	}
-	
+
 }
